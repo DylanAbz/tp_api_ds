@@ -7,12 +7,11 @@ import {Router} from "express";
 export const AuthController = Router();
 
 AuthController.post("/login", async (req, res) => {
-    const {nom_utilisateur, mdp} = req.body;
-    // const mdpHash = createHash('sha256').update(mdp).digest('base64'); On part désormais du principe que le mdp est déjà hashé
+    const {username, password} = req.body as {username : string, password : string};
     const user = await prisma.users.findFirst({
         where: {
-            username: nom_utilisateur,
-            password: mdp
+            username,
+            password
         }
     })
     if (user) {

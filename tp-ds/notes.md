@@ -19,3 +19,6 @@ Cela voudrait peut-être sous-entendre qu'un miel peut avoir 2 prix différents 
 
 Toutes les routes devraient être préfixés de ce qu'elles gèrent réellement
 
+La correction de la partie 2 ne fonctionne pas par manque de temps
+La seule requête que j'ai utilisé a été vérifié (elle servait à créer un utilisateur avec Postman)
+

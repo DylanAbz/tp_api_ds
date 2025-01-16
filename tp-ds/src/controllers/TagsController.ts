@@ -33,7 +33,7 @@ TagsController.put("/:id", async (req, res) => {
         where: {
             id: parseInt(req.params.id)
         }, data: {
-            tag: tag
+            nom: tag
         }
     })
     res.json({updatedTag}).status(200)
