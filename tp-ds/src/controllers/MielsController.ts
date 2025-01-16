@@ -47,12 +47,11 @@ MielsController.post("/", async (req, res) => {
     res.json({miel}).status(200);
 })
 
-MielsController.put("/:id/prix/:prix", async (req, res) => {
+MielsController.put("/:id", async (req, res) => {
     const {nom, description} = req.body;
     const miel = await prisma.miels.update({
         where: {
             id: parseInt(req.params.id),
-            prix: parseInt(req.params.prix)
         },
         data: {
             nom: nom,

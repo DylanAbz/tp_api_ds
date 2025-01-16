@@ -4,6 +4,7 @@ import cors from "cors";
 import { MielsController } from "./controllers/MielsController"
 import {TagsController} from "./controllers/TagsController";
 import {UsersController} from "./controllers/UsersController";
+import {AuthController} from "./controllers/AuthController";
 
 dotenv.config();
 
@@ -15,7 +16,8 @@ app.use(cors())
 
 app.use("/miels", MielsController)
 app.use("/tags", TagsController)
-app.use("/", UsersController)
+app.use("/users", UsersController)
+app.use("/auth", AuthController)
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });

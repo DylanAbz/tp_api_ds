@@ -6,38 +6,7 @@ import {userInfo} from "os";
 const jwt = require('jsonwebtoken');
 
 export const UsersController = Router();
-UsersController.post("/me-connecter", async (req, res) => {
-    const {nom_utilisateur, mdp} = req.body;
-    const mdpHash = createHash('sha256').update(mdp).digest('base64');
-    const user = await prisma.users.findFirst({
-        where: {
-            username: nom_utilisateur,
-            password: mdpHash
-        }
-    })
-    if (user) {
-        let { token } = user
-        res.json({letoken : token}).status(200);
-    }
-})
 
-UsersController.post('/signup', async (req, res) => {
-    const {username, password} = req.body as {username : string, password : string};
-    const mdpHash = createHash('sha256').update(password).digest('base64');
-    const token = jwt.sign(username, process.env.TOKEN_SECRET);
-    const newUser = await prisma.users.create({
-        data: {
-            username: username,
-            password: mdpHash,
-            token
-        }
-    })
-    if (newUser) {
-        res.json({newUser}).status(200);
-    } else {
-        res.json({error: "User creation impossible"}).status(400);
-    }
-})
 
 UsersController.get("/", async (req, res) => {
     const users = await prisma.users.findMany();
