@@ -12,13 +12,10 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors())
 
-app.get("/", (req: Request, res: Response) => {
-    res.send("Express + TypeScript Server base");
-});
 
 app.use("/miels", MielsController)
 app.use("/tags", TagsController)
-app.use("/me-connecter", UsersController)
+app.use("/", UsersController)
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
